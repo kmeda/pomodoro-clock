@@ -1,0 +1,98 @@
+.bg-glow
+  height: 300px
+  width: 300px
+  border-radius: 50%
+  box-shadow: 0px 0px 10px #00FFA7
+  .session
+    width: 300px
+    height: 300px
+    border-radius: 50%
+    background-color: #00FFA7
+    box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
+    .sessionMask
+      height: 200px
+      width: 200px
+      background-color: black
+      border-radius: 50%
+      box-shadow: 0px 0px 30px rgba(0,0,0,1)
+      .sessionTimer
+        color: white
+        font-size: 1.5em
+      .break
+        display: none
+        height: 200px
+        width: 200px
+        background-color: #FF3100
+        border-radius: 50%
+        box-shadow: 0px 0px 40px rgba(0,0,0,0.8) inset
+        position: absolute
+        .breakMask
+          height: 150px
+          width: 150px
+          background-color: black
+          border-radius: 50%
+          box-shadow: 0px 0px 40px rgba(0,0,0,0.4)
+          .breakTimer
+            color: white
+            font-size: 1.5em
+
+
+.bg-glow, .session, .sessionMask, .break, .breakMask
+  display: flex
+  justify-content: center
+  align-items: center
+
+
+.animate
+  
+	-webkit-animation-duration: 1.5s
+	-webkit-animation-fill-mode: forwards
+	-webkit-animation-play-state: running
+	-webkit-animation-iteration-count: infinite
+@-webkit-keyframes animateMask
+  0%
+    box-shadow: 0px 0px 30px rgba(0,0,0,1)
+  100%
+    box-shadow: 0px 0px 10px rgba(0,0,0,1)
+
+.shadow-glow
+	-webkit-animation-name: growProgressBar
+	-webkit-animation-duration: 1.5s
+	-webkit-animation-fill-mode: forwards
+	-webkit-animation-play-state: running
+	-webkit-animation-iteration-count: infinite
+@-webkit-keyframes growProgressBar
+  0%
+    box-shadow: 0px 0px 30px #00FFA7
+  100%
+    box-shadow: 0px 0px 10px #00FFA7
+
+.sessionProgBar
+	-webkit-animation-name: sessionProgBar
+	-webkit-animation-duration: 10s
+	-webkit-animation-fill-mode: both
+	-webkit-animation-play-state: running
+	-webkit-animation-iteration-count: infinite
+@-webkit-keyframes sessionProgBar
+  0%
+    width: 0%
+    background-color: #00FFA7
+  100%
+    width: 100%
+    background-color: #00FFA7
+
+
+.container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 100vh
+  width: 100vw
+
+.wrapper
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 500px
+  width: 500px
