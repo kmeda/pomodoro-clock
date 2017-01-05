@@ -9,7 +9,7 @@ $('.sessionMask').addClass('sessionProgBar');
 window.randomize = function() {
 		var rotation = Math.floor(Math.random() * 180);
 		var fill_rotation = 180;
-		var fix_rotation = rotation * 2;
+		var fix_rotation = 180 * 2;
 		console.log(rotation);
 
 		$('.session .fill, .session .mask.full').css('-webkit-transform', 'rotate(' + fill_rotation + 'deg)');
