@@ -7,14 +7,16 @@
     width: 300px
     height: 300px
     border-radius: 50%
-    background-color: #00FFA7
+    //background-color: #00FFA7
     box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
     .sessionMask
+      //display: none
       height: 220px
       width: 220px
       background-color: black
       border-radius: 50%
       box-shadow: 0px 0px 30px rgba(0,0,0,1)
+      position: absolute
       .sessionTimer
         color: white
         font-size: 1.5em
@@ -43,21 +45,36 @@
   align-items: center
 
 
-.animate
+.session
+	.mask, .fill
+		width: 300px
+		height: 300px
+		position: absolute
+		border-radius: 50%
+		-webkit-backface-visibility: hidden
+		transition: transform 30s
 
-	-webkit-animation-duration: 1.5s
-	-webkit-animation-fill-mode: forwards
-	-webkit-animation-play-state: running
-	-webkit-animation-iteration-count: infinite
-@-webkit-keyframes animateMask
-  0%
-    box-shadow: 0px 0px 30px rgba(0,0,0,1)
-  100%
-    box-shadow: 0px 0px 10px rgba(0,0,0,1)
+	.mask
+		/* rect(<top>, <right>, <bottom>, <left>) */
+		clip: rect(0px, 300px, 300px, 150px)
+		.fill
+			/* rect(<top>, <right>, <bottom>, <left>) */
+			clip: rect(0px, 150px, 300px, 0px)
+			background-color: #00FFA7
+
+
+
+
+
+
+
+
+
+
 
 .shadow-glow
 	-webkit-animation-name: growProgressBar
-	-webkit-animation-duration: 1.5s
+	-webkit-animation-duration: 1s
 	-webkit-animation-fill-mode: forwards
 	-webkit-animation-play-state: running
 	-webkit-animation-iteration-count: infinite
@@ -69,17 +86,16 @@
 
 .sessionProgBar
 	-webkit-animation-name: sessionProgBar
-	-webkit-animation-duration: 10s
+	-webkit-animation-duration: 1s
 	-webkit-animation-fill-mode: both
 	-webkit-animation-play-state: running
 	-webkit-animation-iteration-count: infinite
 @-webkit-keyframes sessionProgBar
   0%
-    width: 0%
-    background-color: #00FFA7
+    box-shadow: 0px 0px 30px rgba(0,0,0,1)
   100%
-    width: 100%
-    background-color: #00FFA7
+    box-shadow: 0px 0px 10px rgba(0,0,0,1)
+
 
 
 .container

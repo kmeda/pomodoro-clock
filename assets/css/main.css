@@ -11,7 +11,6 @@
     height: 300px;
     -webkit-border-radius: 50%;
             border-radius: 50%;
-    background-color: #00FFA7;
     -webkit-box-shadow: 0px 0px 30px black inset;
             box-shadow: 0px 0px 30px black inset; }
     .bg-glow .session .sessionMask {
@@ -21,7 +20,8 @@
       -webkit-border-radius: 50%;
               border-radius: 50%;
       -webkit-box-shadow: 0px 0px 30px black;
-              box-shadow: 0px 0px 30px black; }
+              box-shadow: 0px 0px 30px black;
+      position: absolute; }
       .bg-glow .session .sessionMask .sessionTimer {
         color: white;
         font-size: 1.5em; }
@@ -61,23 +61,29 @@
       -ms-flex-align: center;
           align-items: center; }
 
-.animate {
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-play-state: running;
-  -webkit-animation-iteration-count: infinite; }
+.session .mask, .session .fill {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 30s;
+  transition: -webkit-transform 30s;
+  transition: transform 30s;
+  transition: transform 30s, -webkit-transform 30s; }
 
-@-webkit-keyframes animateMask {
-  0% {
-    -webkit-box-shadow: 0px 0px 30px black;
-            box-shadow: 0px 0px 30px black; }
-  100% {
-    -webkit-box-shadow: 0px 0px 10px black;
-            box-shadow: 0px 0px 10px black; } }
+.session .mask {
+  /* rect(<top>, <right>, <bottom>, <left>) */
+  clip: rect(0px, 300px, 300px, 150px); }
+  .session .mask .fill {
+    /* rect(<top>, <right>, <bottom>, <left>) */
+    clip: rect(0px, 150px, 300px, 0px);
+    background-color: #00FFA7; }
 
 .shadow-glow {
   -webkit-animation-name: growProgressBar;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-play-state: running;
   -webkit-animation-iteration-count: infinite; }
@@ -92,18 +98,18 @@
 
 .sessionProgBar {
   -webkit-animation-name: sessionProgBar;
-  -webkit-animation-duration: 10s;
+  -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-play-state: running;
   -webkit-animation-iteration-count: infinite; }
 
 @-webkit-keyframes sessionProgBar {
   0% {
-    width: 0%;
-    background-color: #00FFA7; }
+    -webkit-box-shadow: 0px 0px 30px black;
+            box-shadow: 0px 0px 30px black; }
   100% {
-    width: 100%;
-    background-color: #00FFA7; } }
+    -webkit-box-shadow: 0px 0px 10px black;
+            box-shadow: 0px 0px 10px black; } }
 
 .container {
   display: -webkit-box;
