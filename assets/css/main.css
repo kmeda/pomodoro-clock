@@ -1,55 +1,47 @@
 @import 'https://fonts.googleapis.com/css?family=Fira+Sans';
-.bg-glow {
-  height: 300px;
-  width: 300px;
-  background-color: #252325;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 4px #00FFA7;
-          box-shadow: 0px 0px 4px #00FFA7;
-  z-index: 1; }
-  .bg-glow .session {
-    width: 300px;
-    height: 300px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
-    -webkit-box-shadow: 0px 0px 30px black inset;
-            box-shadow: 0px 0px 30px black inset; }
-    .bg-glow .session .sessionMask {
-      height: 220px;
-      width: 220px;
-      background-color: black;
-      -webkit-border-radius: 50%;
-              border-radius: 50%;
-      -webkit-box-shadow: 0px 0px 30px black;
-              box-shadow: 0px 0px 30px black;
-      position: absolute;
-      cursor: pointer; }
-      .bg-glow .session .sessionMask .sessionTimer {
-        color: white;
-        font-size: 1.5em; }
-      .bg-glow .session .sessionMask .break {
-        height: 220px;
-        width: 220px;
-        background-color: #FF3100;
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
-        -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8) inset;
-                box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8) inset;
-        position: absolute; }
-        .bg-glow .session .sessionMask .break .breakMask {
-          height: 170px;
-          width: 170px;
-          background-color: black;
-          -webkit-border-radius: 50%;
-                  border-radius: 50%;
-          -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-                  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4); }
-          .bg-glow .session .sessionMask .break .breakMask .breakTimer {
-            color: white;
-            font-size: 1.5em; }
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  width: 100vw; }
 
-.bg-glow, .session, .sessionMask, .break, .breakMask {
+.wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 400px;
+  width: 330px; }
+
+.bg-glow, .session, .maskContainer, .sessionMask, .break, .breakMask {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,6 +55,66 @@
       -ms-flex-align: center;
           align-items: center; }
 
+.bg-glow {
+  height: 300px;
+  width: 300px;
+  background-color: #252325;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 4px #00FFA7;
+          box-shadow: 0px 0px 4px #00FFA7; }
+  .bg-glow .session {
+    width: 300px;
+    height: 300px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 30px black inset;
+            box-shadow: 0px 0px 30px black inset; }
+  .bg-glow .maskContainer {
+    height: 220px;
+    width: 220px;
+    background-color: black;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 30px black;
+            box-shadow: 0px 0px 30px black;
+    position: absolute; }
+  .bg-glow .maskContainer2 {
+    height: 170px;
+    width: 170px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10; }
+  .bg-glow .sessionTimer {
+    position: absolute;
+    color: white;
+    font-size: 1.5em; }
+  .bg-glow .break {
+    height: 220px;
+    width: 220px;
+    background-color: #FF3100;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8) inset;
+            box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8) inset;
+    position: absolute; }
+  .bg-glow .breakMask {
+    height: 170px;
+    width: 170px;
+    background-color: black;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    position: absolute;
+    -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    pointer-events: none; }
+    .bg-glow .breakMask .breakTimer {
+      color: white;
+      font-size: 1.5em; }
+
 .session .mask, .session .fill {
   width: 300px;
   height: 300px;
@@ -72,16 +124,27 @@
   -webkit-backface-visibility: hidden; }
 
 .session .mask {
-  /* rect(<top>, <right>, <bottom>, <left>) */
   clip: rect(0px, 300px, 300px, 150px); }
   .session .mask .fill {
-    /* rect(<top>, <right>, <bottom>, <left>) */
     clip: rect(0px, 150px, 300px, 0px);
     background-color: #00FFA7; }
 
 .fill {
   -webkit-box-shadow: 0px 0px 30px black inset;
           box-shadow: 0px 0px 30px black inset; }
+
+.break .mask, .break .fill {
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.break .mask {
+  clip: rect(0px, 220px, 220px, 110px); }
+  .break .mask .fill {
+    clip: rect(0px, 110px, 220px, 0px);
+    background-color: #FF3100; }
 
 .shadow-glow {
   -webkit-animation-name: growProgressBar;
@@ -192,52 +255,9 @@
   .wrapper .controls .resetAll {
     height: 25px;
     width: 25px;
-    background-color: black;
     cursor: pointer;
     background-image: url(../images/reset.png);
     background-size: contain; }
-
-.container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
-  width: 100vw; }
-
-.wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 500px;
-  width: 530px; }
 
 body {
   margin: 0;
