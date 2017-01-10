@@ -1,14 +1,19 @@
 .bg-glow
   height: 300px
   width: 300px
+  background-color: rgb(37, 35, 37)
   border-radius: 50%
-  box-shadow: 0px 0px 10px #00FFA7
+  box-shadow: 0px 0px 4px #00FFA7
+  z-index: 1
+
+
   .session
     width: 300px
     height: 300px
     border-radius: 50%
     //background-color: #00FFA7
     box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
+
     .sessionMask
       //display: none
       height: 220px
@@ -17,11 +22,12 @@
       border-radius: 50%
       box-shadow: 0px 0px 30px rgba(0,0,0,1)
       position: absolute
+      cursor: pointer
       .sessionTimer
         color: white
         font-size: 1.5em
       .break
-        display: none
+        //display: none
         height: 220px
         width: 220px
         background-color: #FF3100
@@ -38,12 +44,10 @@
             color: white
             font-size: 1.5em
 
-
 .bg-glow, .session, .sessionMask, .break, .breakMask
   display: flex
   justify-content: center
   align-items: center
-
 
 .session
 	.mask, .fill
@@ -52,8 +56,7 @@
 		position: absolute
 		border-radius: 50%
 		-webkit-backface-visibility: hidden
-		transition: transform 30s
-
+		//transition: transform 10s
 	.mask
 		/* rect(<top>, <right>, <bottom>, <left>) */
 		clip: rect(0px, 300px, 300px, 150px)
@@ -61,15 +64,8 @@
 			/* rect(<top>, <right>, <bottom>, <left>) */
 			clip: rect(0px, 150px, 300px, 0px)
 			background-color: #00FFA7
-
-
-
-
-
-
-
-
-
+.fill
+  box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
 
 
 .shadow-glow
@@ -96,6 +92,55 @@
   100%
     box-shadow: 0px 0px 10px rgba(0,0,0,1)
 
+.wrapper
+  .controls
+    display: flex
+    justify-content: space-between
+    margin-top : 20px
+    width: 215px
+    height: 45px
+    //z-index: 2
+    .sessionContainer, .breakContainer
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      align-items: center
+      height: 45px
+      .header
+        font-size: 0.6em
+        color: white
+        font-family: sans-serif
+
+    .sessionInterval, .breakInterval
+      display: flex
+      justify-content: space-between
+      align-items: center
+      color: black
+      width: 90px
+      height: 25px
+      background-color: black
+      .plus, .minus
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 25px
+        width: 25px
+        background-color: #525252
+        font-size: 1em
+        font-weight: bold
+        font-family: arial
+        cursor: pointer
+        box-shadow: 0px 0px 15px  #525252, inset 0px 0px 10px #525252
+      .sessionCount, .breakCount
+        color: white
+    .resetAll
+      height: 25px
+      width: 25px
+      background-color: black
+      cursor: pointer
+      background:
+        image: url(../images/reset.png)
+        size: contain
 
 
 .container
@@ -108,7 +153,8 @@
 
 .wrapper
   display: flex
+  flex-direction: column
   justify-content: center
   align-items: center
   height: 500px
-  width: 500px
+  width: 530px

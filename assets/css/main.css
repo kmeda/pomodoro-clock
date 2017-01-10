@@ -2,10 +2,12 @@
 .bg-glow {
   height: 300px;
   width: 300px;
+  background-color: #252325;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 10px #00FFA7;
-          box-shadow: 0px 0px 10px #00FFA7; }
+  -webkit-box-shadow: 0px 0px 4px #00FFA7;
+          box-shadow: 0px 0px 4px #00FFA7;
+  z-index: 1; }
   .bg-glow .session {
     width: 300px;
     height: 300px;
@@ -21,12 +23,12 @@
               border-radius: 50%;
       -webkit-box-shadow: 0px 0px 30px black;
               box-shadow: 0px 0px 30px black;
-      position: absolute; }
+      position: absolute;
+      cursor: pointer; }
       .bg-glow .session .sessionMask .sessionTimer {
         color: white;
         font-size: 1.5em; }
       .bg-glow .session .sessionMask .break {
-        display: none;
         height: 220px;
         width: 220px;
         background-color: #FF3100;
@@ -67,11 +69,7 @@
   position: absolute;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 30s;
-  transition: -webkit-transform 30s;
-  transition: transform 30s;
-  transition: transform 30s, -webkit-transform 30s; }
+  -webkit-backface-visibility: hidden; }
 
 .session .mask {
   /* rect(<top>, <right>, <bottom>, <left>) */
@@ -80,6 +78,10 @@
     /* rect(<top>, <right>, <bottom>, <left>) */
     clip: rect(0px, 150px, 300px, 0px);
     background-color: #00FFA7; }
+
+.fill {
+  -webkit-box-shadow: 0px 0px 30px black inset;
+          box-shadow: 0px 0px 30px black inset; }
 
 .shadow-glow {
   -webkit-animation-name: growProgressBar;
@@ -111,6 +113,90 @@
     -webkit-box-shadow: 0px 0px 10px black;
             box-shadow: 0px 0px 10px black; } }
 
+.wrapper .controls {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 20px;
+  width: 215px;
+  height: 45px; }
+  .wrapper .controls .sessionContainer, .wrapper .controls .breakContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 45px; }
+    .wrapper .controls .sessionContainer .header, .wrapper .controls .breakContainer .header {
+      font-size: 0.6em;
+      color: white;
+      font-family: sans-serif; }
+  .wrapper .controls .sessionInterval, .wrapper .controls .breakInterval {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: black;
+    width: 90px;
+    height: 25px;
+    background-color: black; }
+    .wrapper .controls .sessionInterval .plus, .wrapper .controls .sessionInterval .minus, .wrapper .controls .breakInterval .plus, .wrapper .controls .breakInterval .minus {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      height: 25px;
+      width: 25px;
+      background-color: #525252;
+      font-size: 1em;
+      font-weight: bold;
+      font-family: arial;
+      cursor: pointer;
+      -webkit-box-shadow: 0px 0px 15px  #525252, inset 0px 0px 10px #525252;
+              box-shadow: 0px 0px 15px  #525252, inset 0px 0px 10px #525252; }
+    .wrapper .controls .sessionInterval .sessionCount, .wrapper .controls .sessionInterval .breakCount, .wrapper .controls .breakInterval .sessionCount, .wrapper .controls .breakInterval .breakCount {
+      color: white; }
+  .wrapper .controls .resetAll {
+    height: 25px;
+    width: 25px;
+    background-color: black;
+    cursor: pointer;
+    background-image: url(../images/reset.png);
+    background-size: contain; }
+
 .container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -137,6 +223,11 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -146,7 +237,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 500px;
-  width: 500px; }
+  width: 530px; }
 
 body {
   margin: 0;
