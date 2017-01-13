@@ -14,7 +14,7 @@
   height: 400px
   width: 330px
 
-.bg-glow, .session, .maskContainer, .sessionMask, .break, .breakMask
+.bg-glow, .session, .maskContainer, .sessionMask, .break, .breakMask, .sessionTimer, .breakTimer
   display: flex
   justify-content: center
   align-items: center
@@ -33,7 +33,7 @@
     border-radius: 50%
     //background-color: #00FFA7
     box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
-    //z-index: 1
+    //z-index: 10
   .maskContainer
     //display: none
     height: 220px
@@ -42,6 +42,7 @@
     border-radius: 50%
     box-shadow: 0px 0px 30px rgba(0,0,0,1)
     position: absolute
+    color: white
     //z-index: 2
   .maskContainer2
     //display: none
@@ -52,12 +53,15 @@
     //box-shadow: 0px 0px 30px rgba(0,0,0,1)
     position: absolute
     cursor: pointer
-    z-index: 10
+    z-index: 13
 
   .sessionTimer
     position: absolute
     color: white
     font-size: 1.5em
+    cursor: pointer
+    z-index: 12
+
   .break
     //display: none
     height: 220px
@@ -77,11 +81,13 @@
     position: absolute
     box-shadow: 0px 0px 40px rgba(0,0,0,0.4)
     cursor: pointer
-    pointer-events: none
+    //pointer-events: none
     //z-index: 5
     .breakTimer
+      position: absolute
       color: white
       font-size: 1.5em
+      cursor: pointer
 
 
 
@@ -101,6 +107,8 @@
 .fill
   box-shadow: 0px 0px 30px rgba(0,0,0,1) inset
 
+
+
 .break
 	.mask, .fill
 		width: 220px
@@ -116,31 +124,61 @@
   		background-color: #FF3100
 
 
-
+// Animation Classes
 
 .shadow-glow
-	-webkit-animation-name: growProgressBar
+	-webkit-animation-name: outerGlow
 	-webkit-animation-duration: 1s
 	-webkit-animation-fill-mode: forwards
 	-webkit-animation-play-state: running
 	-webkit-animation-iteration-count: infinite
-@-webkit-keyframes growProgressBar
+
+@-webkit-keyframes outerGlow
   0%
     box-shadow: 0px 0px 30px #00FFA7
   100%
     box-shadow: 0px 0px 10px #00FFA7
 
-.sessionProgBar
-	-webkit-animation-name: sessionProgBar
+.innerShadow
+	-webkit-animation-name: innerShadow
 	-webkit-animation-duration: 1s
-	-webkit-animation-fill-mode: both
+	-webkit-animation-fill-mode: forwards
 	-webkit-animation-play-state: running
 	-webkit-animation-iteration-count: infinite
-@-webkit-keyframes sessionProgBar
+
+@-webkit-keyframes innerShadow
   0%
     box-shadow: 0px 0px 30px rgba(0,0,0,1)
   100%
     box-shadow: 0px 0px 10px rgba(0,0,0,1)
+
+.session
+  .fill, .mask.full
+    //animation: sessionAnimate180 5s linear paused forwards infinite
+.session
+  .fill.fix
+    //animation: sessionAnimate360 5s linear paused forwards infinite
+
+.break
+  .fill, .mask.full
+    //animation: sessionAnimate180 5s linear paused forwards infinite
+.break
+  .fill.fix
+    //animation: sessionAnimate360 5s linear paused forwards infinite
+.paused
+  animation-play-state: paused !important
+
+@-webkit-keyframes sessionAnimate180
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(180deg)
+
+@-webkit-keyframes sessionAnimate360
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
 
 .wrapper
   .controls
