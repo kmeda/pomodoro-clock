@@ -112,7 +112,8 @@
     position: absolute;
     -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
             box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-    cursor: pointer; }
+    cursor: pointer;
+    color: white; }
     .bg-glow .breakMask .breakTimer {
       position: absolute;
       color: white;
@@ -282,6 +283,10 @@
     cursor: pointer;
     background-image: url(../images/reset.png);
     background-size: contain; }
+
+.alert {
+  margin-bottom: 70px;
+  font-size: 1.2em; }
 
 body {
   margin: 0;
