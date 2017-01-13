@@ -1,91 +1,285 @@
 $(function(){
-// Animate breathing effect
 
-//
-// Get Session input
-    var sessionInput = 1;
-    $('.sessionCount').html(sessionInput);
-    $('.psession').click(function(){
-      sessionInput += 1;
-      if (sessionInput < 1) {
-        sessionInput = 1;
-      }
-      $('.sessionCount').html(sessionInput);
-      console.log(sessionInput);
-    });
+//Initialize
+$('.session').css('background-color', '#00FFA7');
+$('.breakTimer').hide();
 
-    $('.msession').click(function(){
-      sessionInput -= 1;
-      if (sessionInput < 1) {
-        sessionInput = 1;
-      }
-      $('.sessionCount').html(sessionInput);
-      console.log(sessionInput);
-    });
-
-// Get Break input
-    var breakInput = 1;
-    $('.breakCount').html(breakInput);
-    $('.pbreak').click(function(){
-      breakInput += 1;
-      if (breakInput < 1) {
-        breakInput = 1;
-      }
-      $('.breakCount').html(breakInput);
-      console.log(breakInput);
-    });
-
-    $('.mbreak').click(function(){
-      breakInput -= 1;
-      if (breakInput < 1) {
-        breakInput = 1;
-      }
-      $('.breakCount').html(breakInput);
-      console.log(breakInput);
-    });
+var sessionInterval = 60
+var breakInterval = 60
 
 // Animate Session radial progress
-
-    $('.session').css('background-color', '#00FFA7');
     window.session = function() {
-		var fill_rotation = 180;
-		var fix_rotation = 180 * 2;
-    $('.session').css('background-color', 'transparent');
-		$('.session .fill, .session .mask.full').css('-webkit-transform', 'rotate(' + fill_rotation + 'deg)');
-		$('.session .fill.fix').css('-webkit-transform', 'rotate(' + fix_rotation + 'deg)');
-    $('.session .mask, .session .fill').css('transition', 'transform '+ (sessionInput*10) +'s');
-    $('.break, .breakMask').hide();
+                      $('.session').css('background-color', 'transparent');
+                      $('.break, .breakMask').hide();
+                      $('.bg-glow').addClass('shadow-glow');
+                      $('.maskContainer').addClass('innerShadow');
 
-  	};
-  	$('.maskContainer2').click(function(){
-      window.session();
-      $('.bg-glow').addClass('shadow-glow');
-      $('.maskContainer').addClass('sessionProgBar');
+                      //Radial progress animation
 
-    });
+                      $('.session .fill, .session .mask.full').css({"animation": "sessionAnimate180"+ " "+(sessionInput*sessionInterval)+"s" +" "+ "linear"+" "+ "forwards"+" "+ "running"+" "+ "1" });
+                      $('.session .fill.fix').css({"animation": "sessionAnimate360"+ " "+(sessionInput*sessionInterval)+"s"+" "+"linear"+" "+"forwards" +" "+ "running"+" "+ "1"});
+
+    };
 
 // Animate Break radial progress
-
-    //$('.break').css('background-color', '#FF3100');
-    window.break = function() {
-		var fill_rotation = 180;
-		var fix_rotation = 180 * 2;
-    $('.break').css('background-color', 'transparent');
-		$('.break .fill, .break .mask.full').css('-webkit-transform', 'rotate(' + fill_rotation + 'deg)');
-		$('.break .fill.fix').css('-webkit-transform', 'rotate(' + fix_rotation + 'deg)');
-    $('.break .mask, .break .fill').css('transition', 'transform '+ (breakInput*10) +'s');
-
+      window.break = function() {
+                      $('.break').css('background-color', 'transparent');
+                      $('.breakTimer').show();
+                      $('.sessionTimer').hide();
+                      $('.break .fill, .break .mask.full').css({"animation": "sessionAnimate180"+ " "+(breakInput*breakInterval)+"s" +" "+ "linear"+ " "+"forwards"+" "+ "running"+" "+ "1" });
+                      $('.break .fill.fix').css({"animation": "sessionAnimate360"+ " "+(breakInput*breakInterval)+"s"+" "+"linear"+ " "+"forwards" +" "+ "running"+" "+ "1"});
 
   	};
-  	$('.breakMask').click(function(){
-      window.break();
-      //$('.bg-glow').addClass('shadow-glow');
-      //$('.sessionMask').addClass('sessionProgBar');
 
-    });
 // Reset All
   $('.resetAll').click(function(){
     location.reload();
   });
 
+
+
+
+
+// Get Session input
+                    var sessionInput = 1;
+                    $('.sessionCount').html('0'+sessionInput);
+                    $('.min').html('00:');
+                    $('.sec').html('00');
+
+                    $('.psession').click(function(){
+                      sessionInput += 1;
+                      sessionClock.totalSeconds = sessionInput * sessionInterval;
+                      if (sessionInput < 1) {
+                        sessionInput = 1;
+                      }
+                      if (sessionInput.toString().length < 2 ) {
+                          $('.sessionCount').html('0'+sessionInput);
+                      } else {
+                        $('.sessionCount').html(sessionInput);
+                      }
+                    });
+
+                    $('.msession').click(function(){
+                      sessionInput -= 1;
+                      sessionClock.totalSeconds = sessionInput * sessionInterval;
+                      if (sessionInput < 1) {
+                        sessionInput = 1;
+                      }
+                      if (sessionInput.toString().length < 2 ) {
+                          $('.sessionCount').html('0'+sessionInput);
+                      } else {
+                        $('.sessionCount').html(sessionInput);
+                      }
+
+                    });
+
+// Get Break input
+                      var breakInput = 1;
+                      $('.breakCount').html('0'+breakInput);
+                      //$('.min').html('00:');
+                      //$('.sec').html('00');
+                      //$('.sessionTimer').html('00:00:00');
+                      $('.pbreak').click(function(){
+                        breakInput += 1;
+                        breakClock.totalSeconds = breakInput * breakInterval;
+                        if (breakInput < 1) {
+                          breakInput = 1;
+
+                        }
+                        if (breakInput.toString().length < 2 ) {
+                            $('.breakCount').html('0'+breakInput);
+                            //$('.sessionTimer').html('0'+sessionInput+':00:00');
+                        } else {
+                          $('.breakCount').html(breakInput);
+                          //$('.sessionTimer').html(sessionInput+':00:00');
+                        }
+
+
+                      });
+
+                      $('.mbreak').click(function(){
+                        breakInput -= 1;
+                        breakClock.totalSeconds = breakInput * breakInterval;
+                        if (breakInput < 1) {
+                          breakInput = 1;
+                        }
+                        if (breakInput.toString().length < 2 ) {
+                            $('.breakCount').html('0'+breakInput);
+                            //$('.sessionTimer').html('0'+sessionInput+':00:00');
+                        } else {
+                          $('.breakCount').html(breakInput);
+                          //$('.sessionTimer').html(sessionInput+':00:00');
+                        }
+
+                      });
+
+
+
+
+//Timer run
+
+var sessionClock = {
+  totalSeconds: sessionInput * sessionInterval,
+
+  start: function () {
+    var self = this;
+		function pad(val) { return val > 9 ? val : "0" + val; }
+    this.interval = setInterval(function () {
+      self.totalSeconds -= 1;
+      console.log(sessionClock.totalSeconds);
+
+      $(".sessionTimer .min").html(pad(Math.floor(self.totalSeconds / 60 % 60) + ':'));
+      $(".sessionTimer .sec").html(pad(parseInt(self.totalSeconds % 60)));
+
+      if (sessionClock.totalSeconds === 0) {
+        sessionClock.pause();
+        $('.break, .breakMask').show();
+        window.break();
+        breakClock.start();
+      }
+
+      //$(".min").html(pad(Math.floor(self.totalSeconds / 60 % 60) + ':'));
+      //$(".sec").html(pad(parseInt(self.totalSeconds % 60)));
+    }, 1000);
+  },
+
+  pause: function () {
+    clearInterval(this.interval);
+    delete this.interval;
+  },
+
+  resume: function () {
+    if (!this.interval) this.start();
+  }
+};
+
+var breakClock = {
+  totalSeconds: breakInput * breakInterval,
+
+  start: function () {
+    var self = this;
+		function pad(val) { return val > 9 ? val : "0" + val; }
+    this.interval = setInterval(function () {
+      self.totalSeconds -= 1;
+
+      console.log(breakClock.totalSeconds);
+      $(".min").html(pad(Math.floor(self.totalSeconds / 60 % 60) + ':'));
+      $(".sec").html(pad(parseInt(self.totalSeconds % 60)));
+
+      if (breakClock.totalSeconds === 0) {
+        breakClock.pause();
+
+      }
+
+
+      //$(".breakTimer .min").html(pad(Math.floor(self.totalSeconds / 60 % 60) + ':'));
+      //$(".breakTimer .sec").html(pad(parseInt(self.totalSeconds % 60)));
+    }, 1000);
+  },
+
+  pause: function () {
+    clearInterval(this.interval);
+    delete this.interval;
+  },
+
+  resume: function () {
+    if (!this.interval) this.start();
+  }
+};
+
+
+
+//Main Control Click
+$('.maskContainer2').click(function(){
+  window.session();
+  //window.break();
+  sessionClock.start();
+  //breakClock.start();
+  $(this).hide();
+  $('.psession, .msession, .pbreak, .mbreak').css('pointer-events', 'none');
 });
+
+//Detect session animation complete event
+
+
+
+});
+
+
+
+
+
+//Main loop
+/*
+
+//Toggle switch to pause/continue
+$('.sessionTimer').click(function(){
+  $('.session .fill, .session .mask.full, .session .fill.fix').toggleClass('paused');
+  if (!sessionClock.interval) {
+    sessionClock.resume();
+  } else {
+    sessionClock.pause();
+  }
+
+});
+
+$('.breakTimer').click(function(){
+  $('.break .fill, .break .mask.full, .break .fill.fix').toggleClass('paused');
+  if (!breakClock.interval) {
+    breakClock.resume();
+  } else {
+    breakClock.pause();
+  }
+
+});
+
+
+
+
+
+$('.session .fill, .session .mask.full, .session .fill.fix').on('animationend', function(){
+  sessionClock.pause();
+  breakClock.start();
+  //breakClock.pause();
+  $('.break, .breakMask').show();
+  //$('.breakMask').css('pointer-events', 'all');
+  //$('.breakTimer').css('z-index', '14');
+  window.break();
+
+});
+
+
+
+
+
+On click - start animation for session duration - One click event && start timer based on input
+On click - pause animation - Toggle event - Pause timer
+On click - resume animation - Toggle event - Continue timer
+On session animation complete - detect event & stop animation - Clear timer
+Start break animation - ?? On detection start animation for break duration - Break timer on
+On click - pause animation - Toggle event - Timer Pause
+On click - resume - Toggle event - Timer continue
+On animation complete - detect event & stop animation - timer clear
+
+
+Loop this while input > 0 and On first click event
+
+Timer function
+We have input in minutes.
+We need output as seconds and milliseconds
+1min = 60sec
+1sec = 99ms
+
+Create an array of ones from input.
+for each minute countup 60 times
+for each second countup 99 times
+
+How to sync count speed with sec and ms and display the result on the fly??
+
+
+
+
+
+
+
+*/

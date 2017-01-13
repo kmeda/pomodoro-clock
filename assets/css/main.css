@@ -41,7 +41,7 @@
   height: 400px;
   width: 330px; }
 
-.bg-glow, .session, .maskContainer, .sessionMask, .break, .breakMask {
+.bg-glow, .session, .maskContainer, .sessionMask, .break, .breakMask, .sessionTimer, .breakTimer {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -78,7 +78,8 @@
             border-radius: 50%;
     -webkit-box-shadow: 0px 0px 30px black;
             box-shadow: 0px 0px 30px black;
-    position: absolute; }
+    position: absolute;
+    color: white; }
   .bg-glow .maskContainer2 {
     height: 170px;
     width: 170px;
@@ -86,11 +87,13 @@
             border-radius: 50%;
     position: absolute;
     cursor: pointer;
-    z-index: 10; }
+    z-index: 13; }
   .bg-glow .sessionTimer {
     position: absolute;
     color: white;
-    font-size: 1.5em; }
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 12; }
   .bg-glow .break {
     height: 220px;
     width: 220px;
@@ -109,11 +112,12 @@
     position: absolute;
     -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
             box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    pointer-events: none; }
+    cursor: pointer; }
     .bg-glow .breakMask .breakTimer {
+      position: absolute;
       color: white;
-      font-size: 1.5em; }
+      font-size: 1.5em;
+      cursor: pointer; }
 
 .session .mask, .session .fill {
   width: 300px;
@@ -147,13 +151,13 @@
     background-color: #FF3100; }
 
 .shadow-glow {
-  -webkit-animation-name: growProgressBar;
+  -webkit-animation-name: outerGlow;
   -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-play-state: running;
   -webkit-animation-iteration-count: infinite; }
 
-@-webkit-keyframes growProgressBar {
+@-webkit-keyframes outerGlow {
   0% {
     -webkit-box-shadow: 0px 0px 30px #00FFA7;
             box-shadow: 0px 0px 30px #00FFA7; }
@@ -161,20 +165,40 @@
     -webkit-box-shadow: 0px 0px 10px #00FFA7;
             box-shadow: 0px 0px 10px #00FFA7; } }
 
-.sessionProgBar {
-  -webkit-animation-name: sessionProgBar;
+.innerShadow {
+  -webkit-animation-name: innerShadow;
   -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
+  -webkit-animation-fill-mode: forwards;
   -webkit-animation-play-state: running;
   -webkit-animation-iteration-count: infinite; }
 
-@-webkit-keyframes sessionProgBar {
+@-webkit-keyframes innerShadow {
   0% {
     -webkit-box-shadow: 0px 0px 30px black;
             box-shadow: 0px 0px 30px black; }
   100% {
     -webkit-box-shadow: 0px 0px 10px black;
             box-shadow: 0px 0px 10px black; } }
+
+.paused {
+  -webkit-animation-play-state: paused !important;
+          animation-play-state: paused !important; }
+
+@-webkit-keyframes sessionAnimate180 {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); } }
+
+@-webkit-keyframes sessionAnimate360 {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
 
 .wrapper .controls {
   display: -webkit-box;
