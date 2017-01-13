@@ -206,9 +206,6 @@ $('.breakTimer').click(function(){
 });
 
 
-
-
-
 $('.session .fill, .session .mask.full, .session .fill.fix').on('animationend', function(){
   sessionClock.pause();
   breakClock.start();
@@ -219,8 +216,6 @@ $('.session .fill, .session .mask.full, .session .fill.fix').on('animationend', 
   window.break();
 
 });
-
-
 
 
 
@@ -235,18 +230,6 @@ On animation complete - detect event & stop animation - timer clear
 
 
 Loop this while input > 0 and On first click event
-
-Timer function
-We have input in minutes.
-We need output as seconds and milliseconds
-1min = 60sec
-1sec = 99ms
-
-Create an array of ones from input.
-for each minute countup 60 times
-for each second countup 99 times
-
-How to sync count speed with sec and ms and display the result on the fly??
 
 
 
