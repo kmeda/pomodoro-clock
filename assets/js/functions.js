@@ -4,8 +4,8 @@ $(function(){
 $('.session').css('background-color', '#00FFA7');
 $('.breakTimer').hide();
 
-var sessionInterval = 6
-var breakInterval = 6
+var sessionInterval = 60
+var breakInterval = 60
 
 // Animate Session radial progress
     window.session = function() {
