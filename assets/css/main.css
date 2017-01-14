@@ -92,6 +92,7 @@
     position: absolute;
     color: white;
     font-size: 1.5em;
+    font-family: verdana;
     cursor: pointer;
     z-index: 12; }
   .bg-glow .break {
@@ -251,8 +252,10 @@
             align-items: center;
     color: black;
     width: 90px;
-    height: 25px;
-    background-color: black; }
+    height: 24px;
+    background-color: black;
+    -webkit-border-radius: 4px;
+            border-radius: 4px; }
     .wrapper .controls .sessionInterval .plus, .wrapper .controls .sessionInterval .minus, .wrapper .controls .breakInterval .plus, .wrapper .controls .breakInterval .minus {
       display: -webkit-box;
       display: -webkit-flex;
@@ -268,14 +271,17 @@
               align-items: center;
       height: 25px;
       width: 25px;
-      background-color: #525252;
+      -webkit-border-radius: 4px;
+              border-radius: 4px;
       font-size: 1em;
       font-weight: bold;
-      font-family: arial;
+      font-family: Verdana;
       cursor: pointer;
       -webkit-box-shadow: 0px 0px 15px  #525252, inset 0px 0px 10px #525252;
               box-shadow: 0px 0px 15px  #525252, inset 0px 0px 10px #525252; }
     .wrapper .controls .sessionInterval .sessionCount, .wrapper .controls .sessionInterval .breakCount, .wrapper .controls .breakInterval .sessionCount, .wrapper .controls .breakInterval .breakCount {
+      font-family: Verdana;
+      font-size: 0.9em;
       color: white; }
   .wrapper .controls .resetAll {
     height: 25px;
@@ -283,6 +289,12 @@
     cursor: pointer;
     background-image: url(../images/reset.png);
     background-size: contain; }
+
+.msession, .psession {
+  background-color: #00FFA7; }
+
+.mbreak, .pbreak {
+  background-color: #00FFA7; }
 
 .alert {
   margin-bottom: 70px;
